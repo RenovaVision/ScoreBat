@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="retry">Retry</string>
+    <string name="can_not_load_matches">Cannot load matches. Try again.</string>
+    <string name="can_not_load_match_details">Cannot load match details. Try again.</string>
+    <string name="matches">Matches</string>
+    <string name="match_details">Match details</string>
+</resources>

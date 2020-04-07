@@ -26,11 +26,11 @@ object Deps {
         const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
         const val moshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.moshi}"
         const val moshiKotlinCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
-    }
-
-    object Rx {
-        const val rxkotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
-        const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+        const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val retrofitConverterMoshi =
+            "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+        const val picasso = "com.squareup.picasso:picasso:2.71828"
     }
 }
 
@@ -57,4 +57,6 @@ private object Versions {
     const val dagger = "2.27"
     const val moshi = "1.9.2"
     const val fragment = "1.2.3"
+    const val okhttp = "4.4.1"
+    const val retrofit = "2.8.1"
 }
