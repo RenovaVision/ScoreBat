@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.renovavision.scorebat.inject.FragmentKey
 import com.renovavision.scorebat.inject.ViewModelKey
 import com.renovavision.scorebat.matches.details.MatchDetailsFragment
-import com.renovavision.scorebat.matches.details.MatchDetailsViewModel
 import com.renovavision.scorebat.matches.list.MatchListFragment
 import com.renovavision.scorebat.matches.list.MatchListViewModel
 import dagger.Binds
@@ -29,9 +28,4 @@ interface MatchesModule {
     @IntoMap
     @FragmentKey(MatchDetailsFragment::class)
     fun matchDetailsFragment(fragment: MatchDetailsFragment): Fragment
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(MatchDetailsViewModel::class)
-    fun matchDetailsViewModel(viewModel: MatchDetailsViewModel): ViewModel
 }

@@ -48,6 +48,11 @@ class MatchListFragment @Inject constructor(
         onViewLifecycle({ binding.recyclerView },
             {
                 layoutManager = LinearLayoutManager(context, VERTICAL, false)
+                matchesAdapter.listener = object : MatchesAdapter.OnItemClickListener {
+                    override fun onItemClicked(match: Match) {
+                        navMatchesListToMatchDetails(match)
+                    }
+                }
                 adapter = matchesAdapter
             })
         onViewLifecycle({ binding.retryButton },

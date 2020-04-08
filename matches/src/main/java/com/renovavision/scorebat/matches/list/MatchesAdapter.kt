@@ -13,14 +13,23 @@ import com.squareup.picasso.Picasso
 
 class MatchesAdapter : BaseAdapter<Match, MatchesAdapter.MatchViewHolder>() {
 
+    var listener: OnItemClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
-        val binding =
-            ItemViewMatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val holder = MatchViewHolder(
+            ItemViewMatchBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
-        return MatchViewHolder(binding)
+        holder.itemView.setOnClickListener {
+            listener?.onItemClicked(items[holder.adapterPosition])
+        }
+
+        return holder
     }
-
-    private var listener: View.OnClickListener? = null
 
     override fun updateItems(list: List<Match>) {
         val diffResult = DiffUtil.calculateDiff(DiffUtilCallback(items, list))
@@ -45,6 +54,12 @@ class MatchesAdapter : BaseAdapter<Match, MatchesAdapter.MatchViewHolder>() {
     ) : BaseDiffUtilCallback<Match>(oldList, newList) {
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-            oldList[oldItemPosition].date == newList[newItemPosition].date
+            oldList[oldItemPosition].title == newList[newItemPosition].title &&
+                    oldList[oldItemPosition].date == newList[newItemPosition].date
+    }
+
+    interface OnItemClickListener {
+
+        fun onItemClicked(match: Match)
     }
 }

@@ -29,48 +29,6 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <LinearLayout
-            android:id="@+id/error_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
-            android:visibility="gone">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/error_message_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/can_not_load_match_details"
-                android:textColor="@color/grey_4a" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/retry_button"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:text="@string/retry"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/red"
-                app:rippleColor="@color/red" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/red"
-            android:indeterminateTintMode="src_in"
-            android:visibility="gone" />
-
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

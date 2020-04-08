@@ -14,5 +14,5 @@ abstract class BaseDiffUtilCallback<T>(
     abstract override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-        oldList[oldItemPosition] == newList[newItemPosition]
+        oldList[oldItemPosition].hashCode() == newList[newItemPosition].hashCode()
 }
