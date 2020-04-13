@@ -9,6 +9,7 @@ import com.renovavision.scorebat.network.Match
 import com.renovavision.scorebat.network.MatchesApi
 import com.renovavision.scorebat.utils.Dispatchable
 import com.renovavision.scorebat.utils.Event
+import com.renovavision.scorebat.utils.SingleLiveEvent
 import com.renovavision.scorebat.utils.ViewEvent
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class MatchListViewModel @Inject constructor(private val matchesApi: MatchesApi)
     ViewModel() {
 
     private val state = MutableLiveData<State>()
-    private val actions = MutableLiveData<ViewEvent>()
+    private val actions = SingleLiveEvent<ViewEvent>()
 
     val networkState: LiveData<State>
         get() = state
