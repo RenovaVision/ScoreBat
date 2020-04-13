@@ -17,5 +17,9 @@ rootProject.name = "ScoreBat"
 
 include(
     ":inject",
-    ":app"
+    ":app",
+    ":style",
+    "matches",
+    "utils",
+    "network"
 )

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main_navigation"
+    app:startDestination="@id/nav_matches">
+
+    <fragment
+        android:id="@+id/nav_matches"
+        android:name="com.renovavision.scorebat.matches.list.MatchListFragment"
+        android:label="Matches">
+
+        <action
+            android:id="@+id/navigate_to_match_details"
+            app:destination="@id/nav_match_details"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_match_details"
+        android:name="com.renovavision.scorebat.matches.details.MatchDetailsFragment"
+        android:label="Match details">
+
+        <argument
+            android:name="match"
+            app:argType="java.io.Serializable"
+            app:nullable="true" />
+    </fragment>
+</navigation>

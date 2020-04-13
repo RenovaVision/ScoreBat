@@ -6,25 +6,25 @@ plugins {
 
 android {
     compileSdkVersion(AndroidConfig.compileSdkVersion)
-    defaultConfig {
-        minSdkVersion(AndroidConfig.minSdkVersion)
-        targetSdkVersion(AndroidConfig.targetSdkVersion)
-    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    lintOptions {
-        isWarningsAsErrors = true
+
+    viewBinding {
+        isEnabled = true
     }
 }
 
 dependencies {
     implementation(project(":style"))
+    implementation(project(":inject"))
+    implementation(project(":utils"))
+    implementation(project(":network"))
+    implementation(Deps.Androidx.material)
     implementation(Deps.Androidx.fragment)
+    implementation(Deps.Androidx.recyclerview)
+    implementation(Deps.Androidx.constraintlayout)
+    implementation(Deps.Square.picasso)
     implementation(Deps.Google.dagger)
     kapt(Deps.Google.daggerCompiler)
 }

@@ -12,6 +12,11 @@ android {
         targetSdkVersion(AndroidConfig.targetSdkVersion)
         versionCode = 1
         versionName = "1.0.0"
+        buildConfigField(
+            "String",
+            "API_URL",
+            "\"https://www.scorebat.com/\""
+        )
     }
     buildTypes {
         getByName("release") {
@@ -35,6 +40,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":inject"))
+    implementation(project(":matches"))
+    implementation(project(":network"))
     implementation(Deps.Androidx.activity)
     implementation(Deps.Androidx.appcompat)
     implementation(Deps.Androidx.core)
@@ -44,8 +52,8 @@ dependencies {
     implementation(Deps.Androidx.constraintlayout)
     implementation(Deps.Google.dagger)
     implementation(Deps.Google.daggerAndroid)
-    implementation(Deps.Rx.rxkotlin)
-    implementation(Deps.Rx.rxandroid)
     kapt(Deps.Google.daggerCompiler)
     kapt(Deps.Google.daggerAndroidProcessor)
+
+    implementation(Deps.Square.retrofit)
 }
