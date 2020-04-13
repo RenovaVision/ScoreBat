@@ -6,7 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.renovavision.scorebat.R
 import com.renovavision.scorebat.inject.FragmentKey
 import com.renovavision.scorebat.matches.list.MatchListFragmentDirections
-import com.renovavision.scorebat.network.model.Match
+import com.renovavision.scorebat.network.Match
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap

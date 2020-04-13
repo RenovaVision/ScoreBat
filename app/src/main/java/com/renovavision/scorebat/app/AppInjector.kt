@@ -2,6 +2,7 @@ package com.renovavision.scorebat.app
 
 import android.app.Application
 import com.renovavision.scorebat.activity.MainActivityModule
+import com.renovavision.scorebat.network.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -13,7 +14,7 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         MainActivityModule::class,
-        com.renovavision.scorebat.network.NetworkModule::class
+        NetworkModule::class
     ]
 )
 @Singleton

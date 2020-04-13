@@ -28,5 +28,5 @@ object NetworkModule {
         ).build()
 
     @Provides
-    internal fun provideMatchApi(retrofit: Retrofit) = retrofit.create(com.renovavision.scorebat.network.MatchesApi::class.java)
+    fun provideMatchApi(retrofit: Retrofit) = retrofit.create(MatchesApi::class.java)
 }

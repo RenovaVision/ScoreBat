@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.renovavision.scorebat.matches.R
 import com.renovavision.scorebat.matches.databinding.FragmentMatchesListBinding
-import com.renovavision.scorebat.network.model.Match
+import com.renovavision.scorebat.network.Match
 import com.renovavision.scorebat.utils.bindingDelegate
 import com.renovavision.scorebat.utils.observe
 import com.renovavision.scorebat.utils.onViewLifecycle
@@ -24,7 +24,7 @@ class MatchListFragment @Inject constructor(
     private val navMatchesListToMatchDetails: (match: @JvmSuppressWildcards Match) -> Unit
 ) : Fragment() {
 
-    private lateinit var matchesAdapter: MatchesAdapter
+    private val matchesAdapter = MatchesAdapter { viewModel.dispatch(it) }
 
     private val binding by bindingDelegate(FragmentMatchesListBinding::bind)
 
@@ -39,8 +39,6 @@ class MatchListFragment @Inject constructor(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        matchesAdapter = MatchesAdapter()
-
         onViewLifecycle({ binding.toolbar },
             {
                 title = context.getString(R.string.matches)
@@ -48,21 +46,16 @@ class MatchListFragment @Inject constructor(
         onViewLifecycle({ binding.recyclerView },
             {
                 layoutManager = LinearLayoutManager(context, VERTICAL, false)
-                matchesAdapter.listener = object : MatchesAdapter.OnItemClickListener {
-                    override fun onItemClicked(match: Match) {
-                        navMatchesListToMatchDetails(match)
-                    }
-                }
                 adapter = matchesAdapter
             })
         onViewLifecycle({ binding.retryButton },
             {
-                setOnClickListener { viewModel.loadMatches() }
+                setOnClickListener { viewModel.dispatch(LoadMatches) }
             }, {
                 setOnClickListener(null)
             })
 
-        viewModel.loadMatches()
+        viewModel.dispatch(LoadMatches)
     }
 
     override fun onStart() {
@@ -73,6 +66,14 @@ class MatchListFragment @Inject constructor(
             binding.recyclerView.visibility = if (!it.showError) View.VISIBLE else View.GONE
             binding.errorContainer.visibility = if (it.showError) View.VISIBLE else View.GONE
             binding.progress.visibility = if (it.isLoading) View.VISIBLE else View.GONE
+        }
+
+        viewModel.clickEvent.observe(this) {
+            when (it) {
+                is NavigateToMatchDetails -> {
+                    navMatchesListToMatchDetails(it.match)
+                }
+            }
         }
     }
 }

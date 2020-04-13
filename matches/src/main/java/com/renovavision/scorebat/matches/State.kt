@@ -1,6 +1,6 @@
 package com.renovavision.scorebat.matches
 
-import com.renovavision.scorebat.network.model.Match
+import com.renovavision.scorebat.network.Match
 
 data class State(
     val isLoading: Boolean,
