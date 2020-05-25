@@ -1,20 +1,22 @@
 package com.renovavision.scorebat.matches.list
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.renovavision.scorebat.common.network.Match
 import com.renovavision.scorebat.common.repo.MatchesRepo
 import com.renovavision.scorebat.matches.MatchesNavigator
-import com.renovavision.scorebat.ui.Dispatchable
+import com.renovavision.scorebat.ui.AsyncEvent
 import com.renovavision.scorebat.ui.Event
+import com.renovavision.scorebat.ui.SyncEvent
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-object LoadMatches : Event
-data class MatchClicked(val match: Match) : Event
+object LoadMatches : AsyncEvent
+data class MatchClicked(val match: Match) : SyncEvent
 
 data class State(
     val isLoading: Boolean,
@@ -27,17 +29,21 @@ class MatchListViewModel(
     private val matchesNavigator: MatchesNavigator
 ) : ViewModel() {
 
-    private val _state = MutableLiveData<State>()
+    @ExperimentalCoroutinesApi
+    private val _state = MutableStateFlow(State(isLoading = true, showError = false))
 
-    val state: LiveData<State> = _state
+    @ExperimentalCoroutinesApi
+    val state: StateFlow<State> = _state
 
-    fun dispatch(dispatchable: Dispatchable) {
-        when (dispatchable) {
+    @ExperimentalCoroutinesApi
+    fun dispatch(event: Event) {
+        when (event) {
             is LoadMatches -> loadMatches()
-            is MatchClicked -> matchesNavigator.openMatchDetails(dispatchable.match)
+            is MatchClicked -> matchesNavigator.openMatchDetails(event.match)
         }
     }
 
+    @ExperimentalCoroutinesApi
     private fun loadMatches() {
         _state.value = State(isLoading = true, showError = false)
         viewModelScope.launch {

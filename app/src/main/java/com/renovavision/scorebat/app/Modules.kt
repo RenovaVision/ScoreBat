@@ -1,10 +1,13 @@
 package com.renovavision.scorebat.app
 
+import androidx.lifecycle.SavedStateHandle
 import com.renovavision.scorebat.activity.NavigatorImpl
 import com.renovavision.scorebat.common.commonModule
 import com.renovavision.scorebat.common.dispatcher.CoroutineDispatcherProvider
+import com.renovavision.scorebat.common.network.Match
 import com.renovavision.scorebat.matches.MatchesNavigator
 import com.renovavision.scorebat.matches.details.MatchDetailsFragment
+import com.renovavision.scorebat.matches.details.MatchDetailsViewModel
 import com.renovavision.scorebat.matches.list.MatchListFragment
 import com.renovavision.scorebat.matches.list.MatchListViewModel
 import com.renovavision.scorebat.ui.navigation.Navigator
@@ -34,6 +37,7 @@ val navigationModule = module {
 
 val mainModule = module {
     viewModel { MatchListViewModel(get(), get()) }
+    viewModel { (handle: SavedStateHandle, match: Match) -> MatchDetailsViewModel(handle, match) }
     fragment { MatchListFragment() }
     fragment { MatchDetailsFragment() }
 }

@@ -66,4 +66,5 @@ dependencies {
     testImplementation(Deps.Androidx.testRules)
     testImplementation(Deps.Androidx.testRunner)
     testImplementation(Deps.Androidx.coreTesting)
+    testImplementation(Deps.Test.podam)
 }

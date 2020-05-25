@@ -47,6 +47,7 @@ object Deps {
         const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
         const val junitExt = "androidx.test.ext:junit:1.1.1"
         const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${PluginVersions.kotlin}"
+        const val podam = "uk.co.jemos.podam:podam:7.2.3.RELEASE"
     }
 }
 

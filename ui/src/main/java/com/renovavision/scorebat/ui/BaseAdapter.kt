@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseAdapter<T : Any, VH : BaseViewHolder<T>>(
-    private val dispatch: Dispatch = {}
+    private val eventHandler: EventHandler = {}
 ) :
     RecyclerView.Adapter<VH>() {
 
@@ -18,7 +18,7 @@ abstract class BaseAdapter<T : Any, VH : BaseViewHolder<T>>(
         })
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        buildViewHolder(parent, viewType).apply { this.onCreateViewHolder(dispatch) }
+        buildViewHolder(parent, viewType).apply { this.onCreateViewHolder(eventHandler) }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.onBindViewHolder(differ.currentList[position])
@@ -50,16 +50,16 @@ private class ValueTypeDiffUtilItemCallback<T>(
 
 abstract class BaseViewHolder<T : Any>(view: View) : RecyclerView.ViewHolder(view) {
 
-    protected lateinit var dispatch: Dispatch
+    protected lateinit var eventHandler: EventHandler
     protected lateinit var item: T
 
-    open fun onCreate(dispatch: Dispatch) {}
+    open fun onCreate(eventHandler: EventHandler) {}
 
     open fun onBind(item: T) {}
 
-    internal fun onCreateViewHolder(dispatch: Dispatch) {
-        this.dispatch = dispatch
-        onCreate(dispatch)
+    internal fun onCreateViewHolder(eventHandler: EventHandler) {
+        this.eventHandler = eventHandler
+        onCreate(eventHandler)
     }
 
     internal fun onBindViewHolder(item: T) {

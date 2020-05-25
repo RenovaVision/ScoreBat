@@ -8,10 +8,6 @@ import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-inline fun <T> LiveData<T>.observe(owner: LifecycleOwner, crossinline observer: (T) -> Unit) {
-    this.observe(owner, Observer { it?.apply(observer) })
-}
-
 inline fun <V : View> Fragment.onViewLifecycle(
     crossinline view: () -> V,
     crossinline onViewCreated: V.() -> Unit = {},

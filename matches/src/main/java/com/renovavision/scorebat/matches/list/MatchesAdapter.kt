@@ -6,11 +6,11 @@ import com.renovavision.scorebat.matches.databinding.ItemViewMatchBinding
 import com.renovavision.scorebat.common.network.Match
 import com.renovavision.scorebat.ui.BaseAdapter
 import com.renovavision.scorebat.ui.BaseViewHolder
-import com.renovavision.scorebat.ui.Dispatch
+import com.renovavision.scorebat.ui.EventHandler
 import com.squareup.picasso.Picasso
 
-class MatchesAdapter(dispatch: Dispatch) :
-    BaseAdapter<Match, MatchesAdapter.MatchViewHolder>(dispatch) {
+class MatchesAdapter(eventHandler: EventHandler) :
+    BaseAdapter<Match, MatchesAdapter.MatchViewHolder>(eventHandler) {
 
     override fun buildViewHolder(parent: ViewGroup, viewType: Int) = MatchViewHolder(
         ItemViewMatchBinding.inflate(
@@ -26,10 +26,10 @@ class MatchesAdapter(dispatch: Dispatch) :
     inner class MatchViewHolder(private val binding: ItemViewMatchBinding) :
         BaseViewHolder<Match>(binding.root) {
 
-        override fun onCreate(dispatch: Dispatch) {
-            super.onCreate(dispatch)
+        override fun onCreate(eventHandler: EventHandler) {
+            super.onCreate(eventHandler)
             itemView.setOnClickListener {
-                item.let { dispatch.invoke(MatchClicked(item)) }
+                item.let { eventHandler.invoke(MatchClicked(item)) }
             }
         }
 
