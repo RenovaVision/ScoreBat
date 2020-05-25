@@ -52,7 +52,7 @@ class MatchListFragment : Fragment(R.layout.fragment_matches_list) {
 
     override fun onStart() {
         super.onStart()
-        model.networkState.observe(this) {
+        model.state.observe(this) {
             matchesAdapter.updateItems(it.matches)
             binding.recyclerView.visibility = if (!it.showError) View.VISIBLE else View.GONE
             binding.errorContainer.visibility = if (it.showError) View.VISIBLE else View.GONE

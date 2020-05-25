@@ -1,9 +1,6 @@
 package com.renovavision.scorebat.matches.details
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +11,7 @@ import com.renovavision.scorebat.common.network.Match
 import com.renovavision.scorebat.ui.bindingDelegate
 import com.renovavision.scorebat.ui.onViewLifecycle
 
-class MatchDetailsFragment : Fragment() {
+class MatchDetailsFragment : Fragment(R.layout.fragment_match_details) {
 
     private val binding by bindingDelegate(FragmentMatchDetailsBinding::bind)
 
@@ -40,10 +37,4 @@ class MatchDetailsFragment : Fragment() {
                 adapter = matchDetailsAdapter
             }, { removeItemDecoration(itemDecoration) })
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_match_details, container, false)
 }

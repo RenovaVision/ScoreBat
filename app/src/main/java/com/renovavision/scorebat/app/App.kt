@@ -2,7 +2,6 @@ package com.renovavision.scorebat.app
 
 import android.app.Application
 import com.renovavision.scorebat.BuildConfig
-import com.renovavision.scorebat.common.commonModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.koin.fragmentFactory
@@ -16,13 +15,7 @@ class App : Application() {
             androidLogger()
             androidContext(this@App)
             fragmentFactory()
-            modules(
-                listOf(
-                    commonModule(BuildConfig.API_URL, cacheDir),
-                    navigationModule,
-                    mainModule
-                )
-            )
+            modules(appModules(BuildConfig.API_URL, cacheDir))
         }
     }
 }

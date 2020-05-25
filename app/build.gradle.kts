@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("androidx.navigation.safeargs.kotlin")
+    id("koin")
 }
 
 android {
@@ -16,6 +17,7 @@ android {
             "API_URL",
             "\"https://www.scorebat.com/\""
         )
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("release") {
@@ -36,6 +38,10 @@ android {
     viewBinding {
         isEnabled = true
     }
+    testOptions {
+        animationsDisabled = true
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -52,4 +58,12 @@ dependencies {
     implementation(Deps.Koin.core)
     implementation(Deps.Koin.viewModel)
     implementation(Deps.Koin.fragment)
+    implementation(Deps.Kotlin.coroutines)
+    implementation(Deps.Kotlin.coroutinesAndroid)
+
+    testImplementation(Deps.Koin.test)
+    testImplementation(Deps.Test.junit)
+    testImplementation(Deps.Androidx.testRules)
+    testImplementation(Deps.Androidx.testRunner)
+    testImplementation(Deps.Androidx.coreTesting)
 }

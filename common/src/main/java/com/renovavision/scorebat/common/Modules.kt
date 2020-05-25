@@ -1,6 +1,7 @@
 package com.renovavision.scorebat.common
 
 import com.renovavision.scorebat.common.network.MatchesApi
+import com.renovavision.scorebat.common.repo.MatchesRepo
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
@@ -19,4 +20,5 @@ fun commonModule(apiUrl: String, httpCacheDir: File?) = module {
             .build()
     }
     factory { (get<Retrofit>()).create(MatchesApi::class.java) }
+    single { MatchesRepo(get(), get()) }
 }

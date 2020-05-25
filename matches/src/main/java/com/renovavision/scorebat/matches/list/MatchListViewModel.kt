@@ -5,11 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.renovavision.scorebat.common.network.Match
-import com.renovavision.scorebat.common.network.MatchesApi
+import com.renovavision.scorebat.common.repo.MatchesRepo
 import com.renovavision.scorebat.matches.MatchesNavigator
 import com.renovavision.scorebat.ui.Dispatchable
 import com.renovavision.scorebat.ui.Event
-import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 object LoadMatches : Event
@@ -22,14 +23,13 @@ data class State(
 )
 
 class MatchListViewModel(
-    private val matchesApi: MatchesApi,
+    private val matchesRepo: MatchesRepo,
     private val matchesNavigator: MatchesNavigator
 ) : ViewModel() {
 
-    private val state = MutableLiveData<State>()
+    private val _state = MutableLiveData<State>()
 
-    val networkState: LiveData<State>
-        get() = state
+    val state: LiveData<State> = _state
 
     fun dispatch(dispatchable: Dispatchable) {
         when (dispatchable) {
@@ -39,15 +39,17 @@ class MatchListViewModel(
     }
 
     private fun loadMatches() {
-        state.value = State(isLoading = true, showError = false)
-        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            state.value = State(isLoading = false, showError = true)
-        }) {
-            val matches = matchesApi.loadMatches()
-            when (matches.isEmpty()) {
-                true -> state.value = State(isLoading = false, showError = true)
-                else -> state.value = State(isLoading = false, showError = false, matches = matches)
-            }
+        _state.value = State(isLoading = true, showError = false)
+        viewModelScope.launch {
+            matchesRepo.loadMatches()
+                .catch { _state.value = State(isLoading = false, showError = true) }
+                .collect {
+                    when (it.isEmpty()) {
+                        true -> _state.value = State(isLoading = false, showError = true)
+                        else -> _state.value =
+                            State(isLoading = false, showError = false, matches = it)
+                    }
+                }
         }
     }
 }

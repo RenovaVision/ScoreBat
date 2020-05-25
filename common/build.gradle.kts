@@ -10,5 +10,6 @@ dependencies {
     implementation(Deps.Square.moshi)
     implementation(Deps.Square.moshiAdapters)
     implementation(Deps.Koin.core)
+    implementation(Deps.Kotlin.coroutines)
     kapt(Deps.Square.moshiKotlinCodegen)
 }

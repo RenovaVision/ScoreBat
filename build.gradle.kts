@@ -12,12 +12,14 @@ allprojects {
         jcenter()
     }
 }
+
 plugins {
     base
     id("com.android.application") version "3.6.3" apply false
     kotlin("android") version PluginVersions.kotlin apply false
     kotlin("kapt") version PluginVersions.kotlin apply false
     id("androidx.navigation.safeargs.kotlin") version PluginVersions.nav apply false
+    id("koin") version PluginVersions.koin apply false
 }
 
 tasks.wrapper {
