@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.renovavision.scorebat.matches.databinding.ItemViewMatchBinding
 import com.renovavision.scorebat.network.Match
-import com.renovavision.scorebat.utils.BaseAdapter
-import com.renovavision.scorebat.utils.BaseViewHolder
-import com.renovavision.scorebat.utils.Dispatch
+import com.renovavision.scorebat.ui.BaseAdapter
+import com.renovavision.scorebat.ui.BaseViewHolder
+import com.renovavision.scorebat.ui.Dispatch
 import com.squareup.picasso.Picasso
 
 class MatchesAdapter(dispatch: Dispatch) :

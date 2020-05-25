@@ -1,4 +1,4 @@
-package com.renovavision.scorebat.utils
+package com.renovavision.scorebat.ui
 
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -32,7 +32,8 @@ inline fun <V : View> Fragment.onViewLifecycle(
 
 fun <B : ViewBinding> Fragment.bindingDelegate(
     bindingProvider: (view: View) -> B
-): BindingDelegate<B> = BindingDelegate(this, bindingProvider)
+): BindingDelegate<B> =
+    BindingDelegate(this, bindingProvider)
 
 class BindingDelegate<B : ViewBinding>(
     private val fragment: Fragment,

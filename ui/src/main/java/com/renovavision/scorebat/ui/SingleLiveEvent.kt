@@ -1,4 +1,4 @@
-package com.renovavision.scorebat.utils
+package com.renovavision.scorebat.ui
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

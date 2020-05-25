@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.renovavision.scorebat.matches.R
 import com.renovavision.scorebat.matches.databinding.FragmentMatchDetailsBinding
 import com.renovavision.scorebat.network.Match
-import com.renovavision.scorebat.utils.bindingDelegate
-import com.renovavision.scorebat.utils.onViewLifecycle
+import com.renovavision.scorebat.ui.bindingDelegate
+import com.renovavision.scorebat.ui.onViewLifecycle
 import javax.inject.Inject
 
 class MatchDetailsFragment @Inject constructor() : Fragment() {

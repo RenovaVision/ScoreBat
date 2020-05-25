@@ -14,7 +14,7 @@ allprojects {
 }
 plugins {
     base
-    id("com.android.application") version "3.6.1" apply false
+    id("com.android.application") version "3.6.3" apply false
     kotlin("android") version PluginVersions.kotlin apply false
     kotlin("kapt") version PluginVersions.kotlin apply false
     id("androidx.navigation.safeargs.kotlin") version PluginVersions.nav apply false

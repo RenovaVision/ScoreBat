@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.renovavision.scorebat.matches.R
 import com.renovavision.scorebat.matches.databinding.FragmentMatchesListBinding
 import com.renovavision.scorebat.network.Match
-import com.renovavision.scorebat.utils.bindingDelegate
-import com.renovavision.scorebat.utils.observe
-import com.renovavision.scorebat.utils.onViewLifecycle
+import com.renovavision.scorebat.ui.bindingDelegate
+import com.renovavision.scorebat.ui.observe
+import com.renovavision.scorebat.ui.onViewLifecycle
 import javax.inject.Inject
 import javax.inject.Named
 

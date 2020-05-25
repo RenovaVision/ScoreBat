@@ -1,4 +1,4 @@
-package com.renovavision.scorebat.utils
+package com.renovavision.scorebat.ui
 
 interface ViewEvent
 

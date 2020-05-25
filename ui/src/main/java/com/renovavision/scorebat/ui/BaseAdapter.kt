@@ -1,4 +1,4 @@
-package com.renovavision.scorebat.utils
+package com.renovavision.scorebat.ui
 
 import android.annotation.SuppressLint
 import android.view.View

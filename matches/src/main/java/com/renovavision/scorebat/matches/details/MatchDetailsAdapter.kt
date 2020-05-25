@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.renovavision.scorebat.matches.databinding.ItemViewVideoBinding
 import com.renovavision.scorebat.network.Video
-import com.renovavision.scorebat.utils.BaseAdapter
-import com.renovavision.scorebat.utils.BaseViewHolder
+import com.renovavision.scorebat.ui.BaseAdapter
+import com.renovavision.scorebat.ui.BaseViewHolder
 
 class MatchDetailsAdapter : BaseAdapter<Video, MatchDetailsAdapter.MatchInfoViewHolder>() {
 
