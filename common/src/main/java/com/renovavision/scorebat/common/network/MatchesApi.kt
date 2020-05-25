@@ -1,4 +1,4 @@
-package com.renovavision.scorebat.network
+package com.renovavision.scorebat.common.network
 
 import com.squareup.moshi.JsonClass
 import retrofit2.http.GET

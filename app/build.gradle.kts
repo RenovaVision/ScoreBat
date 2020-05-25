@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -40,9 +39,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":inject"))
     implementation(project(":matches"))
-    implementation(project(":network"))
+    implementation(project(":common"))
+    implementation(project(":ui"))
     implementation(Deps.Androidx.activity)
     implementation(Deps.Androidx.appcompat)
     implementation(Deps.Androidx.core)
@@ -50,10 +49,7 @@ dependencies {
     implementation(Deps.Androidx.navFrag)
     implementation(Deps.Androidx.material)
     implementation(Deps.Androidx.constraintlayout)
-    implementation(Deps.Google.dagger)
-    implementation(Deps.Google.daggerAndroid)
-    kapt(Deps.Google.daggerCompiler)
-    kapt(Deps.Google.daggerAndroidProcessor)
-
-    implementation(Deps.Square.retrofit)
+    implementation(Deps.Koin.core)
+    implementation(Deps.Koin.viewModel)
+    implementation(Deps.Koin.fragment)
 }

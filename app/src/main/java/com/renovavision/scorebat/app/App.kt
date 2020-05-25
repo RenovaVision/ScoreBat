@@ -2,24 +2,27 @@ package com.renovavision.scorebat.app
 
 import android.app.Application
 import com.renovavision.scorebat.BuildConfig
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import com.renovavision.scorebat.common.commonModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.fragment.koin.fragmentFactory
+import org.koin.core.context.startKoin
 
-class App : Application(), HasAndroidInjector {
-
-    @Inject
-    internal lateinit var androidInjector: DispatchingAndroidInjector<Any>
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        DaggerAppInjector
-            .factory()
-            .create(this, BuildConfig.API_URL, cacheDir)
-            .inject(this)
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            fragmentFactory()
+            modules(
+                listOf(
+                    commonModule(BuildConfig.API_URL, cacheDir),
+                    navigationModule,
+                    mainModule
+                )
+            )
+        }
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }

@@ -16,9 +16,8 @@ pluginManagement {
 rootProject.name = "ScoreBat"
 
 include(
-    ":inject",
-    ":app",
+    ":common",
     ":ui",
-    "matches",
-    "network"
+    ":app",
+    "matches"
 )

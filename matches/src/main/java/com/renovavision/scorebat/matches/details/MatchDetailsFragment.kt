@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.renovavision.scorebat.matches.R
 import com.renovavision.scorebat.matches.databinding.FragmentMatchDetailsBinding
-import com.renovavision.scorebat.network.Match
+import com.renovavision.scorebat.common.network.Match
 import com.renovavision.scorebat.ui.bindingDelegate
 import com.renovavision.scorebat.ui.onViewLifecycle
-import javax.inject.Inject
 
-class MatchDetailsFragment @Inject constructor() : Fragment() {
+class MatchDetailsFragment : Fragment() {
 
     private val binding by bindingDelegate(FragmentMatchDetailsBinding::bind)
 

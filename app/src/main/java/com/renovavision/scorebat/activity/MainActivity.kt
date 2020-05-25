@@ -2,29 +2,24 @@ package com.renovavision.scorebat.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import com.renovavision.scorebat.R
-import com.renovavision.scorebat.inject.DaggerFragmentFactory
-import dagger.android.AndroidInjection
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    internal lateinit var daggerFragmentFactory: DaggerFragmentFactory
+    private val navigatorImpl: NavigatorImpl by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-        supportFragmentManager.fragmentFactory = daggerFragmentFactory
+        setupKoinFragmentFactory()
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        navigatorImpl.bind(this)
     }
 
-    private fun findNavController(): NavController {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-        return navHostFragment.navController
+    override fun onDestroy() {
+        navigatorImpl.unbind()
+        super.onDestroy()
     }
 }

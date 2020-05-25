@@ -10,16 +10,10 @@ object Deps {
         const val navFrag = "androidx.navigation:navigation-fragment-ktx:${PluginVersions.nav}"
     }
 
-    object Google {
-        const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-        const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
-        const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
-        const val daggerAndroidProcessor =
-            "com.google.dagger:dagger-android-processor:${Versions.dagger}"
-    }
-
-    object Javax {
-        const val inject = "javax.inject:javax.inject:1"
+    object Koin {
+        const val core = "org.koin:koin-android:${Versions.koin}"
+        const val viewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+        const val fragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
     }
 
     object Square {
@@ -54,9 +48,9 @@ object AndroidConfig {
  * sync".
  */
 private object Versions {
-    const val dagger = "2.27"
     const val moshi = "1.9.2"
     const val fragment = "1.2.3"
     const val okhttp = "4.4.1"
     const val retrofit = "2.8.1"
+    const val koin = "2.1.5"
 }

@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("kapt")
 }
 
 android {
@@ -16,14 +15,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":inject"))
     implementation(project(":ui"))
-    implementation(project(":network"))
+    implementation(project(":common"))
     implementation(Deps.Androidx.material)
     implementation(Deps.Androidx.fragment)
     implementation(Deps.Androidx.recyclerview)
     implementation(Deps.Androidx.constraintlayout)
     implementation(Deps.Square.picasso)
-    implementation(Deps.Google.dagger)
-    kapt(Deps.Google.daggerCompiler)
+    implementation(Deps.Koin.viewModel)
 }

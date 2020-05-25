@@ -3,7 +3,7 @@ package com.renovavision.scorebat.matches.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.renovavision.scorebat.matches.databinding.ItemViewMatchBinding
-import com.renovavision.scorebat.network.Match
+import com.renovavision.scorebat.common.network.Match
 import com.renovavision.scorebat.ui.BaseAdapter
 import com.renovavision.scorebat.ui.BaseViewHolder
 import com.renovavision.scorebat.ui.Dispatch

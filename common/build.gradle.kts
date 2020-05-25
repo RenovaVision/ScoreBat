@@ -9,7 +9,6 @@ dependencies {
     implementation(Deps.Square.retrofitConverterMoshi)
     implementation(Deps.Square.moshi)
     implementation(Deps.Square.moshiAdapters)
-    implementation(Deps.Google.dagger)
-    kapt(Deps.Google.daggerCompiler)
+    implementation(Deps.Koin.core)
     kapt(Deps.Square.moshiKotlinCodegen)
 }
